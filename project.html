@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Result Calculator</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#f2f2f2;
+    text-align:center;
+}
+
+.container{
+    width:350px;
+    background:white;
+    padding:20px;
+    margin:auto;
+    margin-top:50px;
+    border-radius:10px;
+    box-shadow:0 0 10px gray;
+}
+
+label{
+    display:block;
+    text-align:left;
+    margin-left:15px;
+    margin-top:8px;
+}
+
+input{
+    width:90%;
+    padding:8px;
+    margin:5px;
+}
+
+button{
+    padding:10px 20px;
+    background:#333;
+    color:white;
+    border:none;
+}
+
+#result{
+    margin-top:20px;
+    font-weight:bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Student Result Calculator</h2>
+
+<label for="name">Student Name</label>
+<input type="text" id="name">
+
+<label for="s1">Subject 1 Marks</label>
+<input type="number" id="s1">
+
+<label for="s2">Subject 2 Marks</label>
+<input type="number" id="s2">
+
+<label for="s3">Subject 3 Marks</label>
+<input type="number" id="s3">
+
+<label for="s4">Subject 4 Marks</label>
+<input type="number" id="s4">
+
+<label for="s5">Subject 5 Marks</label>
+<input type="number" id="s5">
+
+<br><br>
+
+<button onclick="calculate()">Calculate Result</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+function calculate(){
+
+let name = document.getElementById("name").value;
+
+let marks = [
+Number(document.getElementById("s1").value),
+Number(document.getElementById("s2").value),
+Number(document.getElementById("s3").value),
+Number(document.getElementById("s4").value),
+Number(document.getElementById("s5").value)
+];
+
+let total = 0;
+
+for(let i=0;i<marks.length;i++){
+total = total + marks[i];
+}
+
+let percentage = total/5;
+
+let grade;
+
+if(percentage >= 90){
+grade="A+";
+}
+else if(percentage >= 75){
+grade="A";
+}
+else if(percentage >= 60){
+grade="B";
+}
+else if(percentage >= 50){
+grade="C";
+}
+else{
+grade="Fail";
+}
+
+document.getElementById("result").innerHTML =
+"Name: "+name+"<br>"+
+"Total Marks: "+total+"<br>"+
+"Percentage: "+percentage+"%<br>"+
+"Grade: "+grade;
+
+}
+
+</script>
+
+</body>
+</html>
